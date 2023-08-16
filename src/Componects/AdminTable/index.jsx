@@ -27,6 +27,11 @@ function AdminTable() {
         href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css"
         rel="stylesheet"
       />
+        <div className="container mx-auto p-4 text-center">
+          <button className="border-gray-800 border-4 p-4 rounded-lg text-white bg-green-600">
+            เพิ่มข้อมูล
+          </button>
+        </div>
       <table id="myTable" className="table ">
         <thead>
           <tr>
