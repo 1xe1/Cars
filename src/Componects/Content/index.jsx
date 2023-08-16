@@ -44,12 +44,12 @@ function Content() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="underline underline-offset-4 text-3xl font-bold mb-4 text-center text-52057B  pb-2">
-        รายชื่อสถานที่
+        รายการรถมือสอง
       </h1>
       <div className="mb-4 text-right">
         <input
           type="text"
-          placeholder="ค้นหาสถานที่"
+          placeholder="ค้นหา"
           className="p-2 border border-gray-300 rounded"
           value={searchTerm}
           onChange={handleSearch}

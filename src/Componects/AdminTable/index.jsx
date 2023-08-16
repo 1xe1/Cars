@@ -5,23 +5,29 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import { fetchData } from "../Api";
 
 function AdminTable() {
-  const [cars, setCars] = useState([]); // Changed 'Cars' to 'cars'
+  const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    fetchData().then((data) => setCars(data));
+    fetchData()
+      .then((data) => setCars(data))
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
 
   useEffect(() => {
-    $("#myTable").DataTable(); // Initialize DataTable plugin after data is fetched
-  }, [cars]); // Re-run this effect whenever 'cars' data changes
+    if (cars.length > 0) {
+      $("#myTable").DataTable();
+    }
+  }, [cars]);
 
   return (
-    <div className="show">
+    <div className="border-8 ">
       <link
         href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css"
         rel="stylesheet"
-      ></link>
-      <table id="myTable" className="display">
+      />
+      <table id="myTable" className="table ">
         <thead>
           <tr>
             <th>motorcycle_id</th>
@@ -32,20 +38,33 @@ function AdminTable() {
             <th>condition</th>
             <th>description</th>
             <th>image_url</th>
+            <th>btn</th>
           </tr>
         </thead>
         <tbody>
-          {cars.map((item) => ( // Changed 'data' to 'cars'
+          {cars.map((item) => (
             <tr key={item.motorcycle_id}>
               <td>{item.motorcycle_id}</td>
               <td>{item.brand}</td>
               <td>{item.model}</td>
               <td>{item.year}</td>
-              <td>{item.price}</td>
+              <td>${item.price}</td>
               <td>{item.condition}</td>
               <td>{item.description}</td>
               <td>
-                <img src={item.image_url} alt={item.model} />
+                <img
+                  src={item.image_url}
+                  alt={item.model}
+                  className="w-24 h-16 rounded-lg" // Adjust the image width, height, and rounded corners
+                />
+              </td>
+              <td>
+              <button className="px-4 py-2 bg-blue-500 text-white mr-4 rounded-lg ">
+                  Edit
+                </button>
+                <button className="px-4 py-2 bg-C70039 text-white rounded-lg">
+                  DEL
+                </button>
               </td>
             </tr>
           ))}
