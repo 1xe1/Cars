@@ -100,10 +100,13 @@ function Content() {
               alt={selectedData.model}
               className="mb-4"
             />
-            <p className="text-gray-500 text-sm">{selectedData.descript}</p>
-            <p className="text-gray-500 text-sm">
-              ประเภท: {selectedData.brand}
-            </p>
+            <p className="text-gray-500 text-sm">{selectedData.model}</p>
+            <p className="text-gray-500 text-sm">ยี่ห้อ: {selectedData.brand}</p>
+            <p className="text-gray-500 text-sm">รุ่น: {selectedData.model}</p>
+            <p className="text-gray-500 text-sm">ปีผลิต: {selectedData.year}</p>
+            <p className="text-gray-500 text-sm">ราคา: {selectedData.price}</p>
+            <p className="text-gray-500 text-sm">สภาพรถ: {selectedData.condition}</p>
+            <p className="text-gray-500 text-sm">รายละเอียดเพิ่มเติม: {selectedData.description}</p>
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
               onClick={handleCloseDetails}
