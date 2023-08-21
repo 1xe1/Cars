@@ -10,6 +10,7 @@ const Navbar = () => {
                     <Link to="/" className=" text-white underline hover:underline-offset-4">Home</Link>
                     <Link to="/AdminTable" className="text-white underline hover:underline-offset-4">Admin</Link>
                     <Link to="/Contact" className="text-white underline hover:underline-offset-4">Contact</Link>
+                    <Link to="/ThreeD" className="text-white underline hover:underline-offset-4">3D</Link>
                 </div>
             </div>
         </nav>
