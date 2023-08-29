@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import $ from "jquery";
 import "datatables.net";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
-import { fetchData } from "../Api";
+import { fetchData } from "../Api/Car";
 import { Link } from "react-router-dom";
 
 function AdminTable() {
@@ -201,7 +201,7 @@ function AdminTable() {
       )}
       {update && selectedData && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
-          <div className="bg-white p-6 w-3/4 max-w-md rounded-lg shadow-lg">
+          <div className="bg-white p-6 w-3/4 max-w-md rounded-lg shadow-lg pt-40">
             <h2 className="text-xl font-bold mb-4 text-center">
               แก้ไขข้อมูลรถจักรยานยนต์
             </h2>

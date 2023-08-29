@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { fetchData } from "../Api";
+import { fetchData } from "../Api/Car";
+import ReserveCar from "../ReserveCar";
+import { Link } from "react-router-dom";
 
 function Content() {
   const [Cars, setCars] = useState([]);
@@ -67,15 +69,25 @@ function Content() {
               <p className="text-gray-500 text-sm">{Car.descript}</p>
               <p className="text-gray-500 text-sm">ประเภท: {Car.brand}</p>
             </div>
-            <button
-              className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-              onClick={() => handleReadMore(Car)}
-            >
-              อ่านเพิ่มเติม
-            </button>
+            <div className="flex justify-between mt-4">
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded w-1/2 mr-2"
+                onClick={() => handleReadMore(Car)}
+              >
+                อ่านเพิ่มเติม
+              </button>
+
+              <Link
+                to="/ReserveCar"
+                className="bg-red-500 text-white px-4 py-2 rounded"
+              >
+                จอง
+              </Link>
+            </div>
           </div>
         ))}
       </div>
+
       <div className="mt-4 flex justify-center">
         {Array.from({ length: totalPages }, (_, i) => (
           <button
@@ -92,7 +104,7 @@ function Content() {
         ))}
       </div>
       {showDetails && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 pt-24">
           <div className="bg-white p-4 max-w-lg">
             <h2 className="text-lg font-bold">{selectedData.model}</h2>
             <img
@@ -101,12 +113,18 @@ function Content() {
               className="mb-4"
             />
             <p className="text-gray-500 text-sm">{selectedData.model}</p>
-            <p className="text-gray-500 text-sm">ยี่ห้อ: {selectedData.brand}</p>
+            <p className="text-gray-500 text-sm">
+              ยี่ห้อ: {selectedData.brand}
+            </p>
             <p className="text-gray-500 text-sm">รุ่น: {selectedData.model}</p>
             <p className="text-gray-500 text-sm">ปีผลิต: {selectedData.year}</p>
             <p className="text-gray-500 text-sm">ราคา: {selectedData.price}</p>
-            <p className="text-gray-500 text-sm">สภาพรถ: {selectedData.condition}</p>
-            <p className="text-gray-500 text-sm">รายละเอียดเพิ่มเติม: {selectedData.description}</p>
+            <p className="text-gray-500 text-sm">
+              สภาพรถ: {selectedData.condition}
+            </p>
+            <p className="text-gray-500 text-sm">
+              รายละเอียดเพิ่มเติม: {selectedData.description}
+            </p>
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
               onClick={handleCloseDetails}
