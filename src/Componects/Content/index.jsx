@@ -14,7 +14,7 @@ function Content() {
 
   const [showReservationPopup, setShowReservationPopup] = useState(false);
 
-  const handleOpenReservationPopup = () => {
+  const handleOpenReservationPopup = (Car) => {
     setShowReservationPopup(true);
   };
 
@@ -86,7 +86,7 @@ function Content() {
 
               <button
                 className="bg-red-500 text-white px-4 py-2 rounded"
-                onClick={handleOpenReservationPopup}
+                onClick={handleOpenReservationPopup(Car)}
               >
                 จอง
               </button>
