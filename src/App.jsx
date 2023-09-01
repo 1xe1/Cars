@@ -7,7 +7,7 @@ import Contact from "./Componects/Contact";
 import ThreeD from "./Componects/ThreeD";
 import Login from "./Componects/Login";
 import Footer from "./Componects/Footer";
-import ReserveCar from "./Componects/ReserveCar";
+import Transactions from "./Componects/ReservationPopup";
 
 function App() {
   return (
@@ -18,12 +18,12 @@ function App() {
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/" element={<Content />}></Route>
         <Route path="/Content" element={<Content />}></Route>
-        <Route path="AdminTable" element={<AdminTable />}></Route>
-        <Route path="Contact" element={<Contact />}></Route>
+        <Route path="/AdminTable" element={<AdminTable />}></Route>
+        <Route path="/Contact" element={<Contact />}></Route>
         <Route path="/InsertData" element={<InsertData />}></Route>
         <Route path="/admin-table" element={<AdminTable />}></Route>  
         <Route path="/ThreeD" element={<ThreeD />}></Route>  
-        <Route path="/ReserveCar elevator" element={<ReserveCar elevator />}></Route>
+        <Route path="/Transactions" element={<Transactions />}></Route>
       </Routes>
       <Footer />
     </>

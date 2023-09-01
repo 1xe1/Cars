@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { fetchData } from "../Api/Car";
-import ReserveCar from "../ReserveCar";
 import { Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+import ReservationPopup from "../ReservationPopup";
 
 function Content() {
   const [Cars, setCars] = useState([]);
@@ -10,6 +11,12 @@ function Content() {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const numPerPage = 6;
+
+  const [showReservationPopup, setShowReservationPopup] = useState(false);
+
+  const handleOpenReservationPopup = () => {
+    setShowReservationPopup(true);
+  };
 
   useEffect(() => {
     fetchData().then((data) => setCars(data));
@@ -77,12 +84,12 @@ function Content() {
                 อ่านเพิ่มเติม
               </button>
 
-              <Link
-                to="/ReserveCar"
+              <button
                 className="bg-red-500 text-white px-4 py-2 rounded"
+                onClick={handleOpenReservationPopup}
               >
                 จอง
-              </Link>
+              </button>
             </div>
           </div>
         ))}
@@ -133,6 +140,12 @@ function Content() {
             </button>
           </div>
         </div>
+      )}
+      {showReservationPopup && selectedData && (
+        <ReservationPopup
+          motorcycleId={selectedData.motorcycle_id}
+          onClose={() => setShowReservationPopup(false)}
+        />
       )}
     </div>
   );

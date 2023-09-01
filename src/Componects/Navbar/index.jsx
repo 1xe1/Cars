@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const handleClick = () => {
     localStorage.clear();
-    window.location.reload();
+    window.location.href="/"
   };
 
   // Get email from localStorage

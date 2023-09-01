@@ -166,7 +166,7 @@ const Contact = () => {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Mobile</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">064-404-2022</div>
+                  <div className="col-sm-9 text-secondary">084-171-2542</div>
                 </div>
                 <hr />
                 <div className="row">

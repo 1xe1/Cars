@@ -2,19 +2,22 @@ import React, { useRef } from 'react';
 
 function Login() {
     const email = useRef();
-    const password = useRef();
-    const getEmail = localStorage.getItem('emailData');
-    const getPassword = localStorage.getItem('passwordData');
-    
+    const phone = useRef();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        if (email.current.value === "641463021@crru.ac.th" && password.current.value === "123456") {
-            localStorage.setItem("emailData", "641463021@crru.ac.th");
-            localStorage.setItem("passwordData", "123456");
+        
+        const apiUrl = 'http://localhost:8081/CarCus/';
+        const response = await fetch(apiUrl);
+        const data = await response.json();
 
-            window.location.reload();
-
+        const user = data.find(item => item.email === email.current.value && item.phone === phone.current.value);
+        
+        if (user) {
+            localStorage.setItem("emailData", user.email);
+            localStorage.setItem("passwordData", user.phone); // Using phone as password
+            
+            window.location.href="/AdminTable"
         }
     };
 
@@ -26,11 +29,10 @@ function Login() {
                     <input type="text" className='w-60 p-2 border rounded-md focus:outline-none focus:ring focus:border-purple-500 bg-rose-600' ref={email} />
                 </div>
                 <div>
-                    <input type="password" name="" id="" className='my-4 w-60 p-2 border rounded-md focus:outline-none focus:ring focus:border-purple-500 bg-rose-600' ref={password} />
+                    <input type="text" className='my-4 w-60 p-2 border rounded-md focus:outline-none focus:ring focus:border-purple-500 bg-rose-600' ref={phone} />
                 </div>
-                <button className='w-44 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 '>Login</button>
+                <button className='w-44 p-2 bg-blue-600 text-white rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300'>Login</button>
             </form>
-            
         </div>
     );
 }

@@ -1,12 +1,19 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8081/CarCus';
+export const loginUser = () => {
+    return axios.get('http://student.crru.ac.th/641463021/cit5603/CarCus/')
+        .then(response => {
+            const userData = response.data.map(item => ({
+                email: item.email,
+                phone: item.phone
+            }));
+            return userData;
 
-export const loginUser = async (email, phone) => {
-    try {
-        const response = await axios.get(`${API_BASE_URL}/?email=${email}&phone=${phone}`);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
+        })
+        .catch(error => {
+            console.log(error);
+            return [];
+        });
+        
 };
+export default loginUser;
